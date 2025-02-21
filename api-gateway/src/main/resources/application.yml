@@ -1,0 +1,31 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: AUTH-SERVICE
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+            - Path=/user/**
+
+        - id: ITEM_SERVICE
+          uri: lb://item-service
+          predicates:
+            - Path=/item/**
+          filters:
+            - AuthenticationFilter
+
+  config:
+    import: optional:file:.env[.properties]
+
+  application:
+    name: API-GATEWAY
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:9000/eureka/
+
+security:
+  jwt:
+    secret-key : ${JWT_SECRET_KEY}
