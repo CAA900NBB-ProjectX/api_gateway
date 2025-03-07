@@ -1,0 +1,17 @@
+services:
+  apigateway:
+    build :
+      context: .
+      dockerfile: Dockerfile
+    container_name: apigwy
+    ports:
+      - 8085:8085
+    environment:
+      server.port: 8085
+      eureka.client.serviceUrl.defaultZone: http://host.docker.internal:8761/eureka
+    networks:
+      - foundit-network
+
+networks:
+  foundit-network:
+    driver: bridge
