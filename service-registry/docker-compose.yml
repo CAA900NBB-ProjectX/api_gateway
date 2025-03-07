@@ -1,0 +1,14 @@
+services:
+  serviceregistry:
+    build :
+      context: .
+      dockerfile: Dockerfile
+    container_name: servreg
+    ports:
+      - 8761:8761
+    networks:
+      - foundit-network
+
+networks:
+  foundit-network:
+    driver: bridge
