@@ -27,7 +27,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone : http://servreg:8761/eureka/
+      defaultZone : http://host.docker.internal:8761/eureka/
 
 management:
   endpoints:
