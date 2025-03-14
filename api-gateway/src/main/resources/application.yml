@@ -20,6 +20,20 @@ spring:
           predicates:
             - Path=/auth/**
 
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/user/**
+          filters:
+            - AuthFilter
+
+        - id: ITEM-SERVICE
+          uri: lb://ITEM-SERVICE
+          predicates:
+            - Path=/item/**
+          filters:
+            - AuthFilter
+
         - id: ITEM-SERVICE
           uri: lb://ITEM-SERVICE
           predicates:
@@ -36,7 +50,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone : http://host.docker.internal:8761/eureka/
+      defaultZone : http://servreg:8761/eureka/
 
 management:
   endpoints:
