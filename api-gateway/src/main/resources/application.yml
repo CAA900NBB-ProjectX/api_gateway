@@ -41,6 +41,20 @@ spring:
           filters:
             - AuthFilter
 
+        - id: CHAT-SERVICE
+          uri: lb://CHAT-SERVICE
+          predicates:
+            - Path=/chats/**
+          filters:
+            - AuthFilter
+
+        - id: CHAT-SERVICE
+          uri: lb://CHAT-SERVICE
+          predicates:
+            - Path=/messages/**
+          filters:
+            - AuthFilter
+
   config:
     import: optional:file:.env[.properties]
 
