@@ -56,11 +56,9 @@ spring:
             - AuthFilter
 
         - id: CHAT-SERVICE
-          uri: ws://CHAT-SERVICE
+          uri: lb:ws://CHAT-SERVICE
           predicates:
-           - Path=/websocket/**
-          filters:
-            - AuthFilter
+           - Path=/ws/**
 
   config:
     import: optional:file:.env[.properties]
