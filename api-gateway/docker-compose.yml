@@ -1,8 +1,6 @@
 services:
   apigateway:
-    build :
-      context: .
-      dockerfile: Dockerfile
+    image: tharukadk/api-gateway:01
     container_name: apigwy
     ports:
       - 8085:8085
@@ -15,3 +13,5 @@ services:
 networks:
   foundit-network:
     driver: bridge
+
+
