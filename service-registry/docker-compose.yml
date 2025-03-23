@@ -1,8 +1,6 @@
 services:
   serviceregistry:
-    build :
-      context: .
-      dockerfile: Dockerfile
+    image: tharukadk/service-registry:01
     container_name: servreg
     ports:
       - 8761:8761
